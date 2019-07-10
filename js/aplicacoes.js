@@ -15,7 +15,7 @@ let b1, b2, c1, c2;
 let bg;
 function setup() {
   bg = loadImage('img/trocador_ar_oleo.jpg');
-  var canvas = createCanvas(480, 400);
+  var canvas = createCanvas(560, 400);
   canvas.parent('aplicacoes');
 
   noStroke();
@@ -26,16 +26,27 @@ function setup() {
 
 }
 
+let agua = 0;
 
 function draw() {
   background(bg);
   // Animate by increasing our x value
-  x = x + 0.8;
+  agua = agua + 0.8;
   // If the shape goes off the canvas, reset the position
-  if (x > width + dim) {
-    x = -dim;
+  if (agua > width + dim) {
+    agua = -dim;
   }
-  setGradient(10, 10, x, 30, color(255, 0, 0), color(255 - x, 0, x), X_AXIS);
+  
+  if (agua < 350) {
+    setGradient(50, 210, agua, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
+  } else if (agua > 350 && agua < 450) {
+    setGradient(50, 210, 370, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
+    setGradient(390, 240-(agua-350), 30, agua-350, color(255- agua, 0, agua), color(255, 0, 0), Y_AXIS);
+  } else {
+    setGradient(50, 210, 370, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
+    setGradient(390, 290, 30, 50, color(255- agua, 0, agua), color(255, 0, 0), Y_AXIS);
+
+  }
   // Even though our rect command draws the shape with its
   // center at the origin, translate moves it to the new
   // x and y position
