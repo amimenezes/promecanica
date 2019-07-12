@@ -27,38 +27,38 @@ function setup() {
 }
 
 let agua = 0;
-
 function draw() {
-  background(bg);
+  let blue = color('blue');
+  let red = color('red');
+  let orange = color('orange');
+  let yellow = color('yellow');
+    background(bg);
   // Animate by increasing our x value
-  agua = agua + 0.8;
+  agua += 4;
   // If the shape goes off the canvas, reset the position
-  if (agua > width + dim) {
-    agua = -dim;
+  if (agua > 800) {
+    agua = 0;
   }
   
+  
   if (agua < 350) {
-    setGradient(50, 210, agua, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
-  } else if (agua > 350 && agua < 450) {
-    setGradient(50, 210, 370, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
-    setGradient(390, 240-(agua-350), 30, agua-350, color(255- agua, 0, agua), color(255, 0, 0), Y_AXIS);
-  } else {
-    setGradient(50, 210, 370, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
-    setGradient(390, 290, 30, 50, color(255- agua, 0, agua), color(255, 0, 0), Y_AXIS);
+    setGradient(50, 210, agua, 30, blue, red, X_AXIS);
+//    setGradient(50, 210, agua, 30, color(255- agua, 0, agua), color(255, 0, 0), X_AXIS);
+  } else if (agua > 350 && agua < 420) {
 
+    setGradient(50, 210, 370, 30, blue, red, X_AXIS);
+    setGradient(390, 240-(agua-350), 30, agua-380, orange, red, Y_AXIS);
+//    setGradient(50, 210, 370, 30, color(255-450, 0, 450), color(255, 0, 0), X_AXIS);
+//    setGradient(390, 240-(agua-350), 30, agua-380, color(255- 450, 0, 450), color(255, 0, 0), Y_AXIS);
+
+  } else {
+    setGradient(50, 210, 370, 30, blue, red, X_AXIS);
+    setGradient(390, 140, 30, 69,  orange, red, Y_AXIS);
+    setGradient(390-(agua-450), 140, (agua-450), 30, yellow, orange, X_AXIS);
+//    setGradient(50, 210, 370, 30, color(255-agua, 0, agua), color(255, 0, 0), X_AXIS);
+//    setGradient(390, 140, 30, 69,  color(255, 0, 0), color(255- 450, 0, 450), Y_AXIS);
+//    setGradient(390-(agua-450), 140, (agua-450), 30, color(255, 0, 0), color(255- agua, 0, agua), X_AXIS);
   }
-  // Even though our rect command draws the shape with its
-  // center at the origin, translate moves it to the new
-  // x and y position
-/*  translate(0, height / 2);
-  fill(255);
-  rect(10, 10, x, 30, 10);
-  // Transforms accumulate. Notice how this rect moves
-  // twice as fast as the other, but it has the same
-  // parameter for the x-axis value
-  translate(x, dim);
-  fill(0);
-  rect(-dim / 2, -dim / 2, dim, dim);*/
 }
 
 function setGradient(x, y, w, h, c1, c2, axis) {
